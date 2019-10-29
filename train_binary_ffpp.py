@@ -27,7 +27,7 @@ import model_big
 parser = argparse.ArgumentParser()
 parser.add_argument('--dataset', default ='databases/faceforensicspp', help='path to root dataset')
 parser.add_argument('--train_set', default ='train', help='train set')
-parser.add_argument('--val_set', default ='val', help='validation set')
+parser.add_argument('--val_set', default ='validation', help='validation set')
 parser.add_argument('--workers', type=int, help='number of data loading workers', default=0)
 parser.add_argument('--batchSize', type=int, default=32, help='batch size')
 parser.add_argument('--imageSize', type=int, default=300, help='the height / width of the input image to network')
