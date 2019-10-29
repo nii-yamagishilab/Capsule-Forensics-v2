@@ -6,13 +6,13 @@ You can clone this repository into your favorite directory:
 
     $ git clone https://github.com/nii-yamagishilab/Capsule-Forensics-v2
 
-## Requirement
+## 1. Requirement
 - PyTorch 1.3
 - TorchVision
 - scikit-learn
 - Numpy
 
-## Project organization
+## 2. Project organization
 - Databases folder, where you can place your training, evaluation, and test set:
 
       ./databases/<faceforensicspp; cgvsphoto_patches; cgvsphoto_full; replay_attack>/<train; validation; test>
@@ -22,11 +22,11 @@ You can clone this repository into your favorite directory:
 
 Pre-trained models for the FaceForensics++ database (includes Real, DeepFakes, Face2Face, and FaceSwap), the CGvsPhoto database, and the Replay-Attack database (with settings described in our paper) are provided in the checkpoints folder.
 
-## Databases
+## 3. Databases
 
 In case of the FaceForensics++ database, it need to be **pre-processed to crop facial area**.
 
-## Training
+## 4. Training
 **Note**: Parameters with detail explanation could be found in the corresponding source code.
 
 Training the Capsule-Forensics-v2 using binary classification on the FaceForensics++ database:
@@ -45,10 +45,10 @@ Training the Capsule-Forensics-v2 on the Idiap Replay-Attack database:
 
     $ python train_replay_attack.py
 
-## Evaluating
+## 5. Evaluating
 **Note**: Parameters with detail explanation could be found in the corresponding source code.
 
-### FaceForensics++ database (includes Real, DeepFakes, Face2Face, and FaceSwap)
+### 5.1. FaceForensics++ database (includes Real, DeepFakes, Face2Face, and FaceSwap)
 Binary classification on images:
 
     $ python test_binary_ffpp.py
@@ -69,7 +69,7 @@ Multiclass classification on videos (extracted as frames):
 
     $ python test_vid_multiclass_ffpp.py
     
-### CGvsPhoto database
+### 5.2. CGvsPhoto database
 
 Testing on patches:
 
@@ -79,12 +79,12 @@ Testing on full images:
 
     $ python test_cgvsphoto_full.py
 
-### Idiap Replay-Attack database
+### 5.3. Idiap Replay-Attack database
 Testing on images:
 
     $ python test_replay_attack.py
 
-## Authors
+## 6. Authors
 - Huy H. Nguyen (https://researchmap.jp/nhhuy/?lang=english)
 - Junichi Yamagishi (https://researchmap.jp/read0205283/?lang=english)
 - Isao Echizen (https://researchmap.jp/echizenisao/?lang=english)
