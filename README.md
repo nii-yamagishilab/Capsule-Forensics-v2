@@ -22,27 +22,69 @@ You can clone this repository into your favorite directory:
 
       ./checkpoints/<binary_faceforensicspp; multiclass_faceforensicspp; cgvsphoto; replay_attack>
 
-Pre-trained models for the FaceForensics++ database (includes DeepFakes, Face2Face, and FaceSwap), the CGvsPhoto database, and the Replay-Attack database (with settings described in our paper) are provided in the checkpoints folder.
+Pre-trained models for the FaceForensics++ database (includes Real, DeepFakes, Face2Face, and FaceSwap), the CGvsPhoto database, and the Replay-Attack database (with settings described in our paper) are provided in the checkpoints folder.
 
-## Dataset
+## Databases
 
-In case of the FaceForensics++ database, it need to be *pre-processed to crop facial area*.
+In case of the FaceForensics++ database, it need to be **pre-processed to crop facial area**.
 
 ## Training
 **Note**: Parameters with detail explanation could be found in the corresponding source code.
 
-    $ python train.py --dataset dataset --train_set train --val_set validation --outf checkpoints --batchSize 100 --niter 100
+Training the Capsule-Forensics-v2 using binary classification on the FaceForensics++ database:
+
+    $ python train_binary_ffpp.py
+   
+Training the Capsule-Forensics-v2 using multiclass classification on the FaceForensics++ database:
+
+    $ python train_multiclass_ffpp.py
+    
+Training the Capsule-Forensics-v2 on the CGvsPhoto database:
+
+    $ python train_cgvsphoto.py
+    
+Training the Capsule-Forensics-v2 on the Idiap Replay-Attack database:
+
+    $ python train_replay_attack.py
 
 ## Evaluating
 **Note**: Parameters with detail explanation could be found in the corresponding source code.
 
-For testing on image level, using test.py
+### FaceForensics++ database (includes Real, DeepFakes, Face2Face, and FaceSwap)
+Binary classification on images:
 
-    $ python test.py --dataset dataset --test_set test --outf checkpoints --id <your selected id>
+    $ python test_binary_ffpp.py
+
+Binary classification on videos (extracted as frames):
+
+    $ python test_vid_binary_ffpp.py
     
-For testing on large images using patch aggregation strategy, please use `test_by_patches.py`.
+Multiclass classification on images:
 
-For testing on video level by aggregating the predicted probabilities of video frames, please use `test_vid_lvl.py`
+    $ python test_multiclass_ffpp.py
+    
+Multiclass classification on images with detail results on each class:
+
+    $ python test_multiclass_detail_ffpp.py
+
+Multiclass classification on videos (extracted as frames):
+
+    $ python test_vid_multiclass_ffpp.py
+    
+### CGvsPhoto database
+
+Testing on patches:
+
+    $ python test_cgvsphoto.py
+
+Testing on full images:
+
+    $ python test_cgvsphoto_full.py
+
+### Idiap Replay-Attack database
+Testing on images:
+
+    $ python test_replay_attack.py
 
 ## Authors
 - Huy H. Nguyen (https://researchmap.jp/nhhuy/?lang=english)
