@@ -20,7 +20,9 @@ You can clone this repository into your favorite directory:
 
       ./checkpoints/<binary_faceforensicspp; multiclass_faceforensicspp; cgvsphoto; replay_attack>
 
-Pre-trained models for the FaceForensics++ database (includes Real, DeepFakes, Face2Face, and FaceSwap), the CGvsPhoto database, and the Replay-Attack database (with settings described in our paper) are provided in the checkpoints folder.
+**Pre-trained models** for the FaceForensics++ database (includes Real, DeepFakes, Face2Face, and FaceSwap), the CGvsPhoto database, and the Replay-Attack database (with settings described in our paper) are provided in the **checkpoints folder**.
+
+Pre-trained models for the FaceForensics++ database which includes **NeuralTextures** will be **availabe soon**
 
 ## 3. Databases
 
