@@ -1,8 +1,6 @@
 # Capsule-Forensics
 
-Implementation of the paper:  <a href="https://arxiv.org/abs/1910.12467">Use of a Capsule Network to Detect Fake Images and Videos</a>.
-
-This is an *updated version* of the previous work:  <a href="https://arxiv.org/abs/1810.11215">Capsule-Forensics: Using Capsule Networks to Detect Forged Images and Videos</a> (ICASSP 2019).
+Implementation of the paper:  <a href="https://arxiv.org/abs/1910.12467">Use of a Capsule Network to Detect Fake Images and Videos</a>, which is an **updated version** of the previous work:  <a href="https://arxiv.org/abs/1810.11215">Capsule-Forensics: Using Capsule Networks to Detect Forged Images and Videos</a> (ICASSP 2019).
 
 You can clone this repository into your favorite directory:
 
