@@ -26,8 +26,7 @@ Pre-trained models for the FaceForensics++ database which includes **NeuralTextu
 
 ## 3. Databases
 
-In case of the FaceForensics++ database, it need to be **pre-processed to crop facial area**.
-We recommend using an image size of 300 x 300 as the input.
+In case of the FaceForensics++ database, it need to be **pre-processed to crop facial area**. We recommend using an image size of 300 x 300 as the input.
 
 ## 4. Training
 **Note**: Parameters with detail explanation could be found in the corresponding source code.
