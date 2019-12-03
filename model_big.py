@@ -194,7 +194,7 @@ class CapsuleLoss(nn.Module):
         super(CapsuleLoss, self).__init__()
         self.cross_entropy_loss = nn.CrossEntropyLoss()
 
-        if gpu_id > 0:
+        if gpu_id >= 0:
             self.cross_entropy_loss.cuda(gpu_id)
 
     def forward(self, classes, labels):
