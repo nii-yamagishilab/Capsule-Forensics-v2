@@ -1,9 +1,9 @@
 """
-Copyright (c) 2019, National Institute of Informatics
+Copyright (c) 2018, National Institute of Informatics
 All rights reserved.
 Author: Huy H. Nguyen
 -----------------------------------------------------
-Script for Capsule-Forensics-v2 model
+Script for Capsule-Forensics model
 """
 
 import sys
@@ -39,15 +39,23 @@ class View(nn.Module):
 
 
 class VggExtractor(nn.Module):
-    def __init__(self):
+    def __init__(self, train=False):
         super(VggExtractor, self).__init__()
 
         self.vgg_1 = self.Vgg(models.vgg19(pretrained=True), 0, 18)
-        self.vgg_1.eval()
+        if train:
+            self.vgg_1.train(mode=True)
+            self.freeze_gradient()
+        else:
+            self.vgg_1.eval()
 
     def Vgg(self, vgg, begin, end):
         features = nn.Sequential(*list(vgg.features.children())[begin:(end+1)])
         return features
+
+    def freeze_gradient(self, begin=0, end=9):
+        for i in range(begin, end+1):
+            self.vgg_1[i].requires_grad = False
 
     def forward(self, input):
         return self.vgg_1(input)
@@ -81,7 +89,9 @@ class FeatureExtractor(nn.Module):
         return scale * tensor / (torch.sqrt(squared_norm))
 
     def forward(self, x):
-        outputs = [capsule(x.detach()) for capsule in self.capsules]
+        # outputs = [capsule(x.detach()) for capsule in self.capsules]
+        # outputs = [capsule(x.clone()) for capsule in self.capsules]
+        outputs = [capsule(x) for capsule in self.capsules]
         output = torch.stack(outputs, dim=-1)
 
         return self.squash(output, dim=-1)
@@ -182,12 +192,19 @@ class CapsuleNet(nn.Module):
         z = self.routing_stats(z, random, dropout=dropout)
         # z[b, data, out_caps]
 
-        classes = F.softmax(z, dim=-1)
+        # classes = F.softmax(z, dim=-1)
 
+        # class_ = classes.detach()
+        # class_ = class_.mean(dim=1)
+
+        # return classes, class_
+
+        classes = F.softmax(z, dim=-1)
         class_ = classes.detach()
         class_ = class_.mean(dim=1)
 
-        return classes, class_
+        return z, class_
+
 
 class CapsuleLoss(nn.Module):
     def __init__(self, gpu_id):
