@@ -240,7 +240,7 @@ if __name__ == '__main__':
     tol_count_vid_faceswap = tol_count_vid_faceswap + count_vid
     tol_correct_faceswap = tol_correct_faceswap + correct
 
-    tol_count_vid = tol_count_vid_real + tol_count_vid_deepfakes + tol_count_vid_face2face + tol_correct_faceswap
+    tol_count_vid = tol_count_vid_real + tol_count_vid_deepfakes + tol_count_vid_face2face + tol_count_vid_faceswap
     tol_correct = tol_correct_real + tol_correct_deepfakes + tol_correct_face2face + tol_correct_faceswap
 
     print('##################################')
