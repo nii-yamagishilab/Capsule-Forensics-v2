@@ -18,11 +18,9 @@ You can clone this repository into your favorite directory:
       ./databases/<faceforensicspp; cgvsphoto_patches; cgvsphoto_full; replay_attack>/<train; validation; test>
 - Checkpoint folder, where the training outputs will be stored:
 
-      ./checkpoints/<binary_faceforensicspp; multiclass_faceforensicspp; cgvsphoto; replay_attack>
+      ./checkpoints/<binary_faceforensicspp (without NeuralTextures); binary_faceforensicspp_v2_full (with NeuralTextures); multiclass_faceforensicspp; cgvsphoto; replay_attack>
 
-**Pre-trained models** for the FaceForensics++ database (includes Real, DeepFakes, Face2Face, and FaceSwap), the CGvsPhoto database, and the Replay-Attack database (with settings described in our paper) are provided in the <a href="https://github.com/nii-yamagishilab/Capsule-Forensics-v2/tree/master/checkpoints">checkpoints folder</a>.
-
-Pre-trained models for the FaceForensics++ database which includes **NeuralTextures** will be **availabe soon**.
+**Pre-trained models** for the FaceForensics++ database (includes Real, DeepFakes, Face2Face, FaceSwap, and NeuralTextures), the CGvsPhoto database, and the Replay-Attack database (with settings described in our paper) are provided in the <a href="https://github.com/nii-yamagishilab/Capsule-Forensics-v2/tree/master/checkpoints">checkpoints folder</a>.
 
 ## 3. Databases
 
