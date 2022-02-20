@@ -26,6 +26,8 @@ You can clone this repository into your favorite directory:
 
 In case of the FaceForensics++ database, it need to be **pre-processed to crop facial area**. We recommend using an image size of 300 x 300 as the input.
 
+Scripts for data preprocessing can be found at `datascripts` directory.
+
 ## 4. Training
 **Note**: Parameters with detail explanation could be found in the corresponding source code.
 
