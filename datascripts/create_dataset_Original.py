@@ -85,30 +85,31 @@ def extract_face(image, bbox, scale = 1.0):
 def extract_face_videos(filename, compress, input_vid_path, input_mask_path, output_img_path):
     print(compress + '_' + filename)
 
-    input_vid_path = os.path.join(input_vid_path, compress, 'videos')
+    vidcap_vid = cv2.VideoCapture(os.path.join(input_vid_path, filename[0:3] + '.mp4'))
+    success_cap_vid, image_cap = vidcap_vid.read()
 
-    vidcap = cv2.VideoCapture(os.path.join(input_vid_path, filename[0:3] + '.mp4'))
-    success_cap, image_cap = vidcap.read()
-
-    image_mask = cv2.imread(os.path.join(input_mask_path, filename, '0000.png'))
+    vidcap_mask_ref = cv2.VideoCapture(os.path.join(input_mask_path, filename + '.mp4'))
+    success_cap_mask_ref, image_mask_ref = vidcap_mask_ref.read()
 
     count = 0
     skip = 0
 
-    while (success_cap):
+    while (success_cap_vid and success_cap_mask_ref):
 
-        bbox = get_bbox(image_mask)
+        bbox = get_bbox(image_mask_ref)
 
         if bbox is None:
             count += 1
             skip += 1
 
-            success_cap, image_cap = vidcap.read()
-            image_mask = cv2.imread(os.path.join(input_mask_path, filename, str(count).zfill(4) + '.png'))
+            success_cap_vid, image_cap = vidcap_vid.read()
+            success_cap_mask_ref, image_mask_ref = vidcap_mask_ref.read()
 
             continue
 
         image_cropped = extract_face(image_cap, bbox, opt.scale)
+        mask_cropped = np.zeros(image_cropped.shape, dtype=np.uint8)
+        image_cropped = np.concatenate((image_cropped, mask_cropped), axis=1)
 
 
         if image_cropped is not None:
@@ -118,8 +119,8 @@ def extract_face_videos(filename, compress, input_vid_path, input_mask_path, out
         if count - skip >= opt.limit:
             break
 
-        success_cap, image_cap = vidcap.read()
-        image_mask = cv2.imread(os.path.join(input_mask_path, filename, str(count).zfill(4) + '.png'))
+        success_cap_vid, image_cap = vidcap_vid.read()
+        success_cap_mask_ref, image_mask_ref = vidcap_mask_ref.read()
 
 if __name__ == '__main__':
 
