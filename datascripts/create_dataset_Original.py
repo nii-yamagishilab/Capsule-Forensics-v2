@@ -108,9 +108,6 @@ def extract_face_videos(filename, compress, input_vid_path, input_mask_path, out
             continue
 
         image_cropped = extract_face(image_cap, bbox, opt.scale)
-        mask_cropped = np.zeros(image_cropped.shape, dtype=np.uint8)
-        image_cropped = np.concatenate((image_cropped, mask_cropped), axis=1)
-
 
         if image_cropped is not None:
             cv2.imwrite(os.path.join(output_img_path, compress + '_' + filename[0:3] + "_%d_original.jpg" % count), image_cropped)
