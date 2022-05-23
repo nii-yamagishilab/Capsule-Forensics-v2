@@ -41,7 +41,6 @@ opt = parser.parse_args()
 print(opt)
 
 img_ext_lst = ('jpg', 'jpeg', 'bmp', 'png', 'ppm', 'gif', 'tiff')
-vid_ext_lst = ('avi', 'mkv', 'mpeg', 'mpg', 'mp4')
 
 def get_file_list(path, ext_lst):
     file_lst = []
